@@ -1,5 +1,5 @@
 {
-  "name": "require-tree",
+  "name": "re-quire",
   "version": "1.0.0",
   "description": "recursively require all the files in a given folder",
   "main": "index.js",
@@ -8,7 +8,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/iovis9/require-tree.git"
+    "url": "git+https://github.com/iovis9/re-quire.git"
   },
   "keywords": [
     "require",
@@ -20,7 +20,7 @@
   "author": "David Marchante",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/iovis9/require-tree/issues"
+    "url": "https://github.com/iovis9/re-quire/issues"
   },
-  "homepage": "https://github.com/iovis9/require-tree#readme"
+  "homepage": "https://github.com/iovis9/re-quire#readme"
 }
