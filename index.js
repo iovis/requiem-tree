@@ -6,6 +6,7 @@ const requiem = (dirname) => {
   const parent = path.parse(dirname);
 
   return fs.readdirSync(dirname).reduce((obj, filename) => {
+    const rootDir = path.dirname(module.parent.filename);
     const pathname = path.join(dirname, filename);
     const isDir = fs.lstatSync(pathname).isDirectory();
 
@@ -15,7 +16,7 @@ const requiem = (dirname) => {
     if (isDir) {
       return { ...obj, [requirename]: requiem(pathname) };
     } else if (formats.includes(file.ext)) {
-      return { ...obj, [requirename]: require(path.join(__dirname, pathname)) };
+      return { ...obj, [requirename]: require(path.join(rootDir, pathname)) };
     } else {
       return obj;
     }
