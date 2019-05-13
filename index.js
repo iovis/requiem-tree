@@ -2,7 +2,7 @@ const fs = require('fs');
 const path = require('path');
 const formats = ['.js', '.json'];
 
-const reQuire = (dirname) => {
+const req = (dirname) => {
   const parent = path.parse(dirname);
 
   return fs.readdirSync(dirname).reduce((obj, filename) => {
@@ -13,7 +13,7 @@ const reQuire = (dirname) => {
     const requirename = file.name === 'index' ? parent.name : file.name;
 
     if (isDir) {
-      return { ...obj, [requirename]: reQuire(pathname) };
+      return { ...obj, [requirename]: req(pathname) };
     } else if (formats.includes(file.ext)) {
       return { ...obj, [requirename]: require(path.join(__dirname, pathname)) };
     } else {
@@ -22,4 +22,4 @@ const reQuire = (dirname) => {
   }, {});
 };
 
-module.exports = reQuire;
+module.exports = req;
