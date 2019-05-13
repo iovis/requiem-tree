@@ -1,0 +1,26 @@
+{
+  "name": "require-tree",
+  "version": "1.0.0",
+  "description": "recursively require all the files in a given folder",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/iovis9/require-tree.git"
+  },
+  "keywords": [
+    "require",
+    "tree",
+    "dir",
+    "folder",
+    "import"
+  ],
+  "author": "David Marchante",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/iovis9/require-tree/issues"
+  },
+  "homepage": "https://github.com/iovis9/require-tree#readme"
+}
