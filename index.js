@@ -2,15 +2,24 @@ const fs = require('fs');
 const path = require('path');
 const formats = ['.js', '.json'];
 
-module.exports = (dirname) => {
-  const dir = path.parse(dirname);
+const requireTree = (dirname) => {
+  const parent = path.parse(dirname);
 
   return fs.readdirSync(dirname).reduce((obj, filename) => {
-    const file = path.parse(filename);
-    const requirename = file.name === 'index' ? dir.name : file.name;
+    const pathname = path.join(dirname, filename);
+    const isDir = fs.lstatSync(pathname).isDirectory();
 
-    return formats.includes(file.ext)
-      ? { ...obj, [requirename]: require(path.join(__dirname, dirname, filename)) }
-      : obj;
+    const file = path.parse(filename);
+    const requirename = file.name === 'index' ? parent.name : file.name;
+
+    if (isDir) {
+      return { ...obj, [requirename]: requireTree(pathname) };
+    } else if (formats.includes(file.ext)) {
+      return { ...obj, [requirename]: require(path.join(__dirname, pathname)) };
+    } else {
+      return obj;
+    }
   }, {});
 };
+
+module.exports = requireTree;
